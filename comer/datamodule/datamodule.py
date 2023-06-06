@@ -20,7 +20,7 @@ from .vocab import vocab
 
 Data = List[Tuple[str, Image.Image, List[str]]]
 
-MAX_SIZE = 4e4  # change here accroading to your GPU memory
+MAX_SIZE = 32e4  # change here accroading to your GPU memory
 
 # load data
 def data_iterator(

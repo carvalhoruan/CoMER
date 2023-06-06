@@ -130,18 +130,47 @@ class LitCoMER(pl.LightningModule):
     ) -> List[Hypothesis]:
         return self.comer_model.beam_search(img, mask, **self.hparams)
 
+
+    #ORIGINAL--------------------------------------------------------
+    #
+    # def configure_optimizers(self):
+    #     optimizer = optim.SGD(
+    #         self.parameters(),
+    #         lr=self.hparams.learning_rate,
+    #         momentum=0.9,
+    #         weight_decay=1e-4,
+    #     )
+
+    #     reduce_scheduler = optim.lr_scheduler.ReduceLROnPlateau(
+    #         optimizer,
+    #         mode="max",
+    #         factor=0.25,
+    #         patience=self.hparams.patience // self.trainer.check_val_every_n_epoch,
+    #     )
+    #     scheduler = {
+    #         "scheduler": reduce_scheduler,
+    #         "monitor": "val_ExpRate",
+    #         "interval": "epoch",
+    #         "frequency": self.trainer.check_val_every_n_epoch,
+    #         "strict": True,
+    #     }
+
+    #     return {"optimizer": optimizer, "lr_scheduler": scheduler}
+
+
+    #BTTR---------------------------------------------------------------
     def configure_optimizers(self):
-        optimizer = optim.SGD(
+        optimizer = optim.Adadelta(
             self.parameters(),
             lr=self.hparams.learning_rate,
-            momentum=0.9,
+            eps=1e-6,
             weight_decay=1e-4,
         )
 
         reduce_scheduler = optim.lr_scheduler.ReduceLROnPlateau(
             optimizer,
             mode="max",
-            factor=0.25,
+            factor=0.1,
             patience=self.hparams.patience // self.trainer.check_val_every_n_epoch,
         )
         scheduler = {
