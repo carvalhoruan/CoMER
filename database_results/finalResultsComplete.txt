@@ -1,0 +1,42 @@
+CONFIGS 1 E 2: PRIMEIRA RODADA DO OPTUNA
+
+1 0.19710144698619841 0.14945113979336072 0.0 0.54347825050354 15
+2 0.0652173936367035 0.13043478727340702 0.0 0.32608696818351746 5
+
+1 {'beam_size': 5, 'd_model': 64, 'data_augmentation': 100, 'dc': 8, 'dim_feedforward': 256, 'dropout': 0.3, 'growthRate': 16, 'nhead': 2, 'num_decoder_layers': 1, 'num_layers': 8, 'scale_aug': False}
+2 {'beam_size': 5, 'd_model': 128, 'data_augmentation': 100, 'dc': 8, 'dim_feedforward': 512, 'dropout': 0.3, 'growthRate': 8, 'nhead': 8, 'num_decoder_layers': 3, 'num_layers': 8, 'scale_aug': False}
+
+
+CONFIGS 3 E 4 (com dropout 0.3 e data_augmentation 100): SEGUNDA RODADA DO OPTUNA
+
+1 0.5869565010070801 0.0 0.5869565010070801 0.5869565010070801 1
+2 0.11956521403044462 0.09782608319073915 0.021739130839705467 0.21739129722118378 2
+
+1 {'beam_size': 5, 'd_model': 128, 'dc': 8, 'dim_feedforward': 256, 'growthRate': 16, 'nhead': 2, 'num_decoder_layers': 3, 'num_layers': 16, 'scale_aug': False}
+2 {'beam_size': 5, 'd_model': 256, 'dc': 8, 'dim_feedforward': 256, 'growthRate': 8, 'nhead': 8, 'num_decoder_layers': 3, 'num_layers': 16, 'scale_aug': False}
+
+
+
+CONFIG 5 (avulsa): 0.1304
+beam_size: 5, d_model: 64, dc: 32, dim_feedforward: 256, dropout: 0.3, growth_rate: 24, nhead: 8, num_decoder_layers: 1, num_layers: 8, scale_aug:False
+
+
+
+ORDENANDO POR MELHOR DESEMPENHO:
+1 0.5869565010070801 0.0 0.5869565010070801 0.5869565010070801 1
+2 0.19710144698619841 0.14945113979336072 0.0 0.54347825050354 15
+3 0.0652173936367035 0.13043478727340702 0.0 0.32608696818351746 5
+4 0.11956521403044462 0.09782608319073915 0.021739130839705467 0.21739129722118378 2
+5 (avulsa): 0.1304
+
+1 {'beam_size': 5, 'd_model': 128, 'data_augmentation': 100, 'dc': 8, 'dim_feedforward': 256, 'dropout': 0.3, 'growthRate': 16, 'nhead': 2, 'num_decoder_layers': 3, 'num_layers': 16, 'scale_aug': False}
+2 {'beam_size': 5, 'd_model': 64, 'data_augmentation': 100, 'dc': 8, 'dim_feedforward': 256, 'dropout': 0.3, 'growthRate': 16, 'nhead': 2, 'num_decoder_layers': 1, 'num_layers': 8, 'scale_aug': False}
+3 {'beam_size': 5, 'd_model': 128, 'data_augmentation': 100, 'dc': 8, 'dim_feedforward': 512, 'dropout': 0.3, 'growthRate': 8, 'nhead': 8, 'num_decoder_layers': 3, 'num_layers': 8, 'scale_aug': False}
+4 {'beam_size': 5, 'd_model': 256, 'data_augmentation': 100, 'dc': 8, 'dim_feedforward': 256, 'dropout': 0.3, 'growthRate': 8, 'nhead': 8, 'num_decoder_layers': 3, 'num_layers': 16, 'scale_aug': False}
+5 {'beam_size': 5, 'd_model': 64, 'data_augmentation': 100, 'dc': 32, 'dim_feedforward': 256, 'dropout': 0.3, 'growth_rate': 24, 'nhead': 8, 'num_decoder_layers': 1, 'num_layers': 8, 'scale_aug':False}
+
+Mapeamento:
+	1 vira 2
+	2 vira 3
+	3 vira 1
+	4 e 5 permanecem

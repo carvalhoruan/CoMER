@@ -2,6 +2,12 @@ lightning_logs/
 
 version_8/
 
+#Resultado do .zip de teste
+result/
+
+#Resultado de pip freeze
+requirements_CoMER.txt
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

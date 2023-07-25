@@ -20,7 +20,7 @@ from .vocab import vocab
 
 Data = List[Tuple[str, Image.Image, List[str]]]
 
-MAX_SIZE = 32e4  # change here accroading to your GPU memory
+MAX_SIZE = 34e4  # change here accroading to your GPU memory
 
 # load data
 def data_iterator(
@@ -99,18 +99,23 @@ def extract_data(archive: ZipFile, dir_name: str, data_augmentation=0) -> Data:
         tmp = line.decode().strip().split()
         img_name = tmp[0]
         formula = tmp[1:]
-        with archive.open(f"{dir_name}/{img_name}.png", "r") as f:
-            # move image to memory immediately, avoid lazy loading, which will lead to None pointer error in loading
-            img = Image.open(f).copy()
-            img = ImageOps.grayscale(img)
+        # with archive.open(f"{dir_name}/{img_name}.png", "r") as f:
+        #     # move image to memory immediately, avoid lazy loading, which will lead to None pointer error in loading
+        #     img = Image.open(f).copy()
+        #     img = ImageOps.grayscale(img)
         
         # TESTE-------------------------------------------------------
-        data_file = archive.read(f"{dir_name}/{img_name}.png")
+        try:
+            data_file = archive.read(f"{dir_name}/{img_name}.jpg")
+        except KeyError:
+            data_file = archive.read(f"{dir_name}/{img_name}.png")
         
         image_cv2 = cv2.imdecode(np.frombuffer(data_file, np.uint8), 1)
         image_cv2 = cv2.cvtColor(image_cv2, cv2.COLOR_BGR2GRAY)
-        dim = (150, 150)
-        image_cv2 = cv2.resize(image_cv2, (dim), interpolation = cv2.INTER_AREA)
+        
+        #Para reduzir a dimensão das imagens, descomentar as duas linhas abaixo
+        # dim = (150, 150)
+        # image_cv2 = cv2.resize(image_cv2, (dim), interpolation = cv2.INTER_AREA)
         
         #cv2.imshow('image', image_cv2)
         #cv2.waitKey()

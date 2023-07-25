@@ -13,7 +13,7 @@ def train_test_COMER_model(params=None, trial=None):
     
     lr_monitor = LearningRateMonitor(logging_interval='epoch')
     checkpoint_callback = ModelCheckpoint(monitor='val_ExpRate', save_top_k=1, mode='max', filename='{epoch}-{step}-{val_ExpRate:.4f}')
-    early_stopping = EarlyStopping('val_ExpRate', patience=6, mode='max')
+    early_stopping = EarlyStopping('val_ExpRate', patience=20, mode='max')
     callbacks = [lr_monitor, checkpoint_callback, early_stopping]
 
     #if trial is not None:
@@ -33,6 +33,8 @@ def train_test_COMER_model(params=None, trial=None):
                               'train_batch_size': 8, 'eval_batch_size': 2,
                               'num_workers': 5, 'data_augmentation':1, 'scale_aug':True}
                         )
+    else:
+        params['trainer']['callbacks'] = callbacks
     
     #seed.seed_everything(params['seed_everything'], workers=True)
 
@@ -83,4 +85,91 @@ def train_test_COMER_model(params=None, trial=None):
 
 
 if __name__ == '__main__':
-    print(train_test_COMER_model())
+
+    #Para rodar na nossa base
+    #Ir em vocab.py e alterar dicionário para dictionary_nossa_base.txt
+    # zipfile_path = '../bases/Base_soma_subtracao_optuna_bttr.zip'
+    # augmentation = 100
+
+    #Para rodar HME7K
+    #Ir em vocab.py e alterar dicionário para dictionary_hme7k.txt
+    zipfile_path = '../bases/HME100K_sum_sub_7k_bttr.zip'
+    augmentation = 0
+
+    params_1_3 = dict(seed_everything='7',
+                        trainer={'checkpoint_callback': True, 'callbacks': None,
+                                 'gpus': GPUS, 'check_val_every_n_epoch': 5, 'max_epochs':500,
+                                 'save_config_overwrite': True},
+                        model={'d_model': 128, 'growth_rate': 16, 'num_layers': 16, 'nhead': 2, 'num_decoder_layers': 3,
+                               'dim_feedforward': 256, 'dropout': 0.3,
+                               'dc': 8, 'cross_coverage': True, 'self_coverage': True,
+                               'beam_size': 5, 'max_len': 200, 'alpha': 1.0, 'early_stopping':False, 'temperature': 1.0,
+                               'learning_rate': 1.0, 'patience': 20},
+                        data={'zipfile_path': zipfile_path, 'test_year': 'test',
+                              'train_batch_size': 8, 'eval_batch_size': 4,
+                              'num_workers': 5, 'data_augmentation':augmentation, 'scale_aug':False}
+                        )
+    
+    params_2_1 = dict(seed_everything='7',
+                        trainer={'checkpoint_callback': True, 'callbacks': None,
+                                 'gpus': GPUS, 'check_val_every_n_epoch': 5, 'max_epochs':500,
+                                 'save_config_overwrite': True},
+                        model={'d_model': 64, 'growth_rate': 16, 'num_layers': 8, 'nhead': 2, 'num_decoder_layers': 1,
+                               'dim_feedforward': 256, 'dropout': 0.3,
+                               'dc': 8, 'cross_coverage': True, 'self_coverage': True,
+                               'beam_size': 5, 'max_len': 200, 'alpha': 1.0, 'early_stopping':False, 'temperature': 1.0,
+                               'learning_rate': 1.0, 'patience': 20},
+                        data={'zipfile_path': zipfile_path, 'test_year': 'test',
+                              'train_batch_size': 8, 'eval_batch_size': 4,
+                              'num_workers': 5, 'data_augmentation':augmentation, 'scale_aug':False}
+                        )
+    
+    params_3_2 = dict(seed_everything='7',
+                        trainer={'checkpoint_callback': True, 'callbacks': None,
+                                 'gpus': GPUS, 'check_val_every_n_epoch': 5, 'max_epochs':500,
+                                 'save_config_overwrite': True},
+                        model={'d_model': 128, 'growth_rate': 8, 'num_layers': 8, 'nhead': 8, 'num_decoder_layers': 3,
+                               'dim_feedforward': 512, 'dropout': 0.3,
+                               'dc': 8, 'cross_coverage': True, 'self_coverage': True,
+                               'beam_size': 5, 'max_len': 200, 'alpha': 1.0, 'early_stopping':False, 'temperature': 1.0,
+                               'learning_rate': 1.0, 'patience': 20},
+                        data={'zipfile_path': zipfile_path, 'test_year': 'test',
+                              'train_batch_size': 8, 'eval_batch_size': 4,
+                              'num_workers': 5, 'data_augmentation':augmentation, 'scale_aug':False}
+                        )
+    
+    params_4 = dict(seed_everything='7',
+                        trainer={'checkpoint_callback': True, 'callbacks': None,
+                                 'gpus': GPUS, 'check_val_every_n_epoch': 5, 'max_epochs':500,
+                                 'save_config_overwrite': True},
+                        model={'d_model': 256, 'growth_rate': 8, 'num_layers': 16, 'nhead': 8, 'num_decoder_layers': 3,
+                               'dim_feedforward': 256, 'dropout': 0.3,
+                               'dc': 8, 'cross_coverage': True, 'self_coverage': True,
+                               'beam_size': 5, 'max_len': 200, 'alpha': 1.0, 'early_stopping':False, 'temperature': 1.0,
+                               'learning_rate': 1.0, 'patience': 20},
+                        data={'zipfile_path': zipfile_path, 'test_year': 'test',
+                              'train_batch_size': 8, 'eval_batch_size': 4,
+                              'num_workers': 5, 'data_augmentation':augmentation, 'scale_aug':False}
+                        )
+    
+    params_5 = dict(seed_everything='7',
+                        trainer={'checkpoint_callback': True, 'callbacks': None,
+                                 'gpus': GPUS, 'check_val_every_n_epoch': 5, 'max_epochs':500,
+                                 'save_config_overwrite': True},
+                        model={'d_model': 64, 'growth_rate': 24, 'num_layers': 8, 'nhead': 8, 'num_decoder_layers': 1,
+                               'dim_feedforward': 256, 'dropout': 0.3,
+                               'dc': 32, 'cross_coverage': True, 'self_coverage': True,
+                               'beam_size': 5, 'max_len': 200, 'alpha': 1.0, 'early_stopping':False, 'temperature': 1.0,
+                               'learning_rate': 1.0, 'patience': 20},
+                        data={'zipfile_path': zipfile_path, 'test_year': 'test',
+                              'train_batch_size': 8, 'eval_batch_size': 4,
+                              'num_workers': 5, 'data_augmentation':augmentation, 'scale_aug':False}
+                        )
+    
+    
+    print(train_test_COMER_model(params_1_3))
+    print(train_test_COMER_model(params_2_1))
+    print(train_test_COMER_model(params_3_2))
+    print(train_test_COMER_model(params_4))
+    print(train_test_COMER_model(params_5))
+    

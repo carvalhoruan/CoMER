@@ -31,7 +31,7 @@ def evaluation_trial(trial):
                                'nhead': trial.suggest_categorical('nhead', [2, 4, 8]), # default: 8,
                                'num_decoder_layers': trial.suggest_categorical('num_decoder_layers', [1, 2, 3]), # default: 3,
                                'dim_feedforward': trial.suggest_categorical('dim_feedforward', [256, 512, 1024]), # default: 1024,
-                               'dropout': trial.suggest_categorical('dropout', [0.0, 0.3]), # default: 0.3,
+                               'dropout': 0.3, # default: 0.3,
                                'dc': trial.suggest_categorical('dc', [8, 16, 32]), # default: 32,
                                'beam_size': trial.suggest_categorical('beam_size', [5, 10]), # default: 10,
                                'max_len': 200, 'alpha': 1.0, 'early_stopping':False, 'temperature': 1.0,
@@ -39,7 +39,7 @@ def evaluation_trial(trial):
                                'cross_coverage': True, 'self_coverage': True},
                         data={'zipfile_path': '../bases/Base_soma_subtracao_optuna_bttr.zip', 'test_year': 'test',
                               'train_batch_size': 8, 'eval_batch_size': 4, 'num_workers': 5,
-                              'data_augmentation': trial.suggest_categorical('data_augmentation', [10, 100]),# default: 0
+                              'data_augmentation': 100,# default: 0
                               'scale_aug': trial.suggest_categorical('scale_aug', [True, False])} # default: True
                         )
     

@@ -1,0 +1,41 @@
+optimize_Base_Soma_Subtr_COMER
+Total trials: 21
+Unique configs: 18
+Total valid trials: 20
+1 0.5869565010070801 0.0 0.5869565010070801 0.5869565010070801 1
+2 0.11956521403044462 0.09782608319073915 0.021739130839705467 0.21739129722118378 2
+3 0.0 0.0 0.0 0.0 1
+4 0.0 0.0 0.0 0.0 1
+5 0.0 0.0 0.0 0.0 1
+6 0.0 0.0 0.0 0.0 1
+7 0.0 0.0 0.0 0.0 1
+8 0.0 0.0 0.0 0.0 1
+9 0.0 0.0 0.0 0.0 1
+10 0.0 0.0 0.0 0.0 1
+11 0.0 0.0 0.0 0.0 1
+12 0.0 0.0 0.0 0.0 1
+13 0.0 0.0 0.0 0.0 1
+14 0.0 0.0 0.0 0.0 1
+15 0.0 0.0 0.0 0.0 2
+16 0.0 0.0 0.0 0.0 1
+17 0.0 0.0 0.0 0.0 1
+
+1 {'beam_size': 5, 'd_model': 128, 'dc': 8, 'dim_feedforward': 256, 'growthRate': 16, 'nhead': 2, 'num_decoder_layers': 3, 'num_layers': 16, 'scale_aug': False}
+2 {'beam_size': 5, 'd_model': 256, 'dc': 8, 'dim_feedforward': 256, 'growthRate': 8, 'nhead': 8, 'num_decoder_layers': 3, 'num_layers': 16, 'scale_aug': False}
+3 {'beam_size': 5, 'd_model': 64, 'dc': 8, 'dim_feedforward': 256, 'growthRate': 24, 'nhead': 8, 'num_decoder_layers': 3, 'num_layers': 16, 'scale_aug': False}
+4 {'beam_size': 5, 'd_model': 256, 'dc': 8, 'dim_feedforward': 256, 'growthRate': 8, 'nhead': 8, 'num_decoder_layers': 3, 'num_layers': 16, 'scale_aug': True}
+5 {'beam_size': 5, 'd_model': 256, 'dc': 16, 'dim_feedforward': 512, 'growthRate': 8, 'nhead': 8, 'num_decoder_layers': 2, 'num_layers': 4, 'scale_aug': False}
+6 {'beam_size': 5, 'd_model': 64, 'dc': 16, 'dim_feedforward': 512, 'growthRate': 16, 'nhead': 4, 'num_decoder_layers': 1, 'num_layers': 4, 'scale_aug': True}
+7 {'beam_size': 5, 'd_model': 64, 'dc': 32, 'dim_feedforward': 256, 'growthRate': 8, 'nhead': 2, 'num_decoder_layers': 2, 'num_layers': 4, 'scale_aug': True}
+8 {'beam_size': 10, 'd_model': 256, 'dc': 16, 'dim_feedforward': 256, 'growthRate': 8, 'nhead': 4, 'num_decoder_layers': 1, 'num_layers': 4, 'scale_aug': True}
+9 {'beam_size': 5, 'd_model': 64, 'dc': 32, 'dim_feedforward': 1024, 'growthRate': 16, 'nhead': 8, 'num_decoder_layers': 1, 'num_layers': 4, 'scale_aug': True}
+10 {'beam_size': 5, 'd_model': 256, 'dc': 32, 'dim_feedforward': 256, 'growthRate': 16, 'nhead': 4, 'num_decoder_layers': 3, 'num_layers': 8, 'scale_aug': False}
+11 {'beam_size': 10, 'd_model': 256, 'dc': 32, 'dim_feedforward': 1024, 'growthRate': 8, 'nhead': 4, 'num_decoder_layers': 2, 'num_layers': 4, 'scale_aug': True}
+12 {'beam_size': 10, 'd_model': 128, 'dc': 8, 'dim_feedforward': 256, 'growthRate': 16, 'nhead': 2, 'num_decoder_layers': 3, 'num_layers': 16, 'scale_aug': False}
+13 {'beam_size': 10, 'd_model': 256, 'dc': 8, 'dim_feedforward': 512, 'growthRate': 24, 'nhead': 8, 'num_decoder_layers': 2, 'num_layers': 8, 'scale_aug': True}
+14 {'beam_size': 10, 'd_model': 128, 'dc': 8, 'dim_feedforward': 256, 'growthRate': 24, 'nhead': 2, 'num_decoder_layers': 2, 'num_layers': 16, 'scale_aug': False}
+15 {'beam_size': 5, 'd_model': 128, 'dc': 16, 'dim_feedforward': 512, 'growthRate': 16, 'nhead': 2, 'num_decoder_layers': 2, 'num_layers': 4, 'scale_aug': False}
+16 {'beam_size': 5, 'd_model': 128, 'dc': 8, 'dim_feedforward': 512, 'growthRate': 8, 'nhead': 8, 'num_decoder_layers': 2, 'num_layers': 4, 'scale_aug': False}
+17 {'beam_size': 5, 'd_model': 128, 'dc': 16, 'dim_feedforward': 1024, 'growthRate': 24, 'nhead': 2, 'num_decoder_layers': 2, 'num_layers': 8, 'scale_aug': False}
+
+

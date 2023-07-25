@@ -181,6 +181,7 @@ class DecodeModel(pl.LightningModule):
         beam_scores = torch.zeros(batch_size, dtype=torch.float, device=self.device)
 
         while cur_len < max_len and not beam_scorer.is_done():
+            print(f"Cur_len: {cur_len}")
             next_token_logits = (
                 self.transform(src, src_mask, input_ids)[:, -1, :] / temperature
             )
